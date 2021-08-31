@@ -3,9 +3,12 @@ project(TileRPG)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-set(SOURCE_FILES main.cpp)
-add_executable(TileRPG ${SOURCE_FILES})
-include_directories(/usr/local/include)
+file(GLOB SRC_FOLDER "src/*.cpp")
+
+set(SOURCE_FILES main.cpp ${SRC_FOLDER})
+
+add_executable(TileRPG ${SOURCE_FILES} ${SRC_FOLDER})
+include_directories(/usr/local/include include)
 
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIRS})
